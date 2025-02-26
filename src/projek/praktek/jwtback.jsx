@@ -43,14 +43,14 @@ export default function AxiosStore2() {
   };
 
   return (
-    <div className="p-4">
-      <header className="flex justify-between items-center mb-6 p-4 bg-gray-50 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-gray-800">Shopping Store</h1>
+    <div className="p-4 bg-black text-white">
+      <header className="flex justify-between items-center mb-6 p-4 bg-black rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold text-yellow-500">Shopping Store</h1>
         <div className="flex items-center gap-4">
-          <span className="text-gray-700 font-medium">Hi, {username}</span>
+          <span className="text-yellow-500 font-medium">Hi, {username}</span>
           <button
             onClick={handleLogout}
-            className="px-4 py-2 bg-red-500 text-white rounded-md shadow hover:bg-red-600 transition duration-300"
+            className="px-4 py-2 bg-yellow-500 text-black rounded-md shadow hover:bg-yellow-600 transition duration-300"
           >
             Logout
           </button>
@@ -85,7 +85,7 @@ function ShoppingCard({
   onUpdate,
 }) {
   return (
-    <div className="border rounded-lg shadow-lg p-4 w-full flex flex-col transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100">
+    <div className="border rounded-lg shadow-lg p-4 w-full flex flex-col transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 bg-white">
       <Link to={`/product/${id}`} className="text-inherit no-underline">
         <img
           src={src}
@@ -93,22 +93,22 @@ function ShoppingCard({
           className="w-full h-60 object-contain rounded-t-lg"
         />
         <div className="py-2 flex-grow">
-          <h2 className="text-md font-semibold">{title}</h2>
-          <p className="text-gray-700">Harga: Rp.{price}</p>
-          <p className="text-gray-700">Quantity: {quantity}</p>
-          <p className="text-gray-700">Total: Rp.{quantity * price}</p>
+          <h2 className="text-2xl font-bold text-black">{title}</h2>
+          <p className="text-gray-700 text-lg font-bold">Rp. {price}</p>
+          <p className="text-gray-700 text-lg font-bold">Quantity: {quantity}</p>
+          <p className="text-gray-700 text-lg font-bold">Total: Rp.{quantity * price}</p>
         </div>
       </Link>
 
       <div className="flex justify-between mt-2">
         <button
-          className="bg-blue-500 text-white w-1/3 py-2 rounded-md"
+          className="bg-yellow-500 text-black w-1/3 py-2 rounded-md hover:bg-blue-600 active:bg-blue-800 font-bold text-lg"
           onClick={() => onUpdate(title, price, 1)}
         >
           Tambah
         </button>
         <button
-          className="bg-red-500 text-white w-1/3 py-2 rounded-md"
+          className="bg-yellow-500 text-black w-1/3 py-2 rounded-md hover:bg-red-600 active:bg-red-800 font-bold text-lg"
           onClick={() => onUpdate(title, price, -1)}
         >
           Kurang
@@ -120,7 +120,7 @@ function ShoppingCard({
 
 export function ProductDetail() {
   const { id } = useParams();
-  const navigate = useNavigate(); // Pastikan ini diimpor dengan benar
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -141,11 +141,8 @@ export function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      {" "}
-      {/* Menambahkan flex untuk memusatkan dan min-h-screen untuk memastikan tinggi layar penuh */}
-      <div className="p-8 flex flex-col lg:flex-row items-center lg:items-start lg:gap-8 bg-gray-50 rounded-lg shadow-md max-w-5xl mx-auto">
-        {/* Product Image */}
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="p-8 flex flex-col lg:flex-row items-center lg:items-start lg:gap-8 bg-white rounded-lg shadow-md max-w-5xl mx-auto">
         <div className="w-full lg:w-1/3">
           <img
             src={product.image}
@@ -154,22 +151,20 @@ export function ProductDetail() {
           />
         </div>
 
-        {/* Product Info */}
         <div className="w-full lg:w-2/3">
-          <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
-          <p className="text-gray-700 text-lg mb-4">Rp. {product.price}</p>
+          <h1 className="text-4xl font-bold font-extrabold text-black">{product.title}</h1>
+          <p className="text-yellow-500 text-2xl font-bold mb-4">Rp. {product.price}</p>
           <p className="text-gray-600 mb-4">{product.description}</p>
           <p className="text-gray-500 mb-4">Category: {product.category}</p>
           <p className="text-gray-500 mb-6">Rating: 4.5/5 (146 reviews)</p>
 
-          {/* Size Selector */}
           <div className="mb-6">
             <p className="text-gray-700 font-medium mb-2">Select Size:</p>
             <div className="flex gap-2">
               {["XS", "S", "M", "L", "XL"].map((size) => (
                 <button
                   key={size}
-                  className="px-4 py-2 border rounded-lg text-gray-700 hover:bg-blue-100 focus:bg-blue-200"
+                  className="px-4 py-2 bg-yellow-500 text-black rounded-lg shadow hover:bg-yellow-600 focus:bg-yellow-700 font-bold text-lg"
                 >
                   {size}
                 </button>
@@ -177,20 +172,18 @@ export function ProductDetail() {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-4">
             <button
-              onClick={() => navigate("/product")} // Gunakan navigate dengan benar
-              className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg shadow hover:bg-gray-300"
+              onClick={() => navigate("/product")}
+              className="px-6 py-2 bg-yellow-500 text-black rounded-lg shadow hover:bg-yellow-600 font-bold text-lg"
             >
               Back to Home
             </button>
-            <button className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600">
+            <button className="px-6 py-2 bg-yellow-500 text-black rounded-lg shadow hover:bg-yellow-600 font-bold text-lg">
               Add to Bag
             </button>
           </div>
 
-          {/* Footer */}
           <p className="text-gray-500 mt-6 text-sm">
             Free shipping on all continental US orders.
           </p>
@@ -199,3 +192,4 @@ export function ProductDetail() {
     </div>
   );
 }
+

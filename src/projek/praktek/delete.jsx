@@ -14,48 +14,49 @@ export default function DeleteAcc() {
     // Mengirim permintaan DELETE ke API
     axios
       .delete(`https://api.escuelajs.co/api/v1/users/${id}`)
-      .then(() => setMessage(`✅ User deleted successfully`))
-      .catch((error) => setMessage(`❌ Error: ${error.message}`));
+      .then(() => setMessage(`  User deleted successfully`))
+      .catch((error) => setMessage(`  Error: ${error.message}`));
 
     // Reset form
     setId("");
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-yellow-400 p-4">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
         <Link
           to="/help"
-          className="inline-block mb-4 text-blue-500 hover:text-blue-700"
+          className="inline-block mb-4 text-black hover:text-gray-700"
         >
           &larr; Back
         </Link>
-        <h1 className="text-2xl font-bold text-gray-700 mb-4 text-center">
-          Delete User
+        <h1 className="text-2xl font-bold text-black mb-4 text-center">
+          Hapus User
         </h1>
 
-        {/* Form Delete User */}
+        {/* Form Hapus User */}
         <form onSubmit={handleDeleteUser} className="space-y-4">
           <input
             type="text"
-            placeholder="Enter User ID"
+            placeholder="Masukkan User ID"
             value={id}
             onChange={(e) => setId(e.target.value)}
             required
-            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="w-full p-3 border border-black rounded focus:outline-none focus:ring-2 focus:ring-black"
           />
 
           <button
             type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded transition duration-200"
+            className="w-full bg-black hover:bg-yellow-500 text-white font-bold py-3 rounded transition duration-200"
           >
-            Delete User
+            Hapus User
           </button>
         </form>
 
         {/* Menampilkan Pesan Sukses/Error */}
-        {message && <p className="mt-4 font-semibold">{message}</p>}
+        {message && <p className="mt-4 font-semibold text-black">{message}</p>}
       </div>
     </div>
   );
 }
+

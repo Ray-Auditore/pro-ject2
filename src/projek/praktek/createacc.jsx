@@ -3,19 +3,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Create() {
-  // State untuk form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "customer", // default role
-    avatar: "https://i.imgur.com/LDOO4Qs.jpg", // default avatar
+    role: "customer",
+    avatar: "https://i.imgur.com/LDOO4Qs.jpg",
   });
 
-  // State untuk pesan hasil request
   const [message, setMessage] = useState("");
 
-  // Fungsi untuk mengubah input form
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,22 +20,20 @@ export default function Create() {
     });
   };
 
-  // Fungsi untuk mengirim data ke API
   const handleCreateUser = (e) => {
     e.preventDefault();
 
     const newUser = {
       ...formData,
-      creationAt: new Date().toISOString(), // Tambah waktu pembuatan
-      updatedAt: new Date().toISOString(), // Tambah waktu perubahan
+      creationAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
 
     axios
       .post("https://api.escuelajs.co/api/v1/users", newUser)
-      .then((response) => setMessage(`✅ User created: ${response.data.name}`))
-      .catch((error) => setMessage(`❌ Error: ${error.message}`));
+      .then((response) => setMessage(`User created: ${response.data.name}`))
+      .catch((error) => setMessage(`Error: ${error.message}`));
 
-    // Reset form setelah submit
     setFormData({
       name: "",
       email: "",
@@ -49,20 +44,18 @@ export default function Create() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-black p-4">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
-        {/* Back Button */}
         <Link
           to="/help"
-          className="inline-block mb-4 text-blue-500 hover:text-blue-700"
+          className="inline-block mb-4 text-yellow-500 hover:text-yellow-700"
         >
           &larr; Back
         </Link>
-        <h2 className="text-2xl font-bold text-gray-700 text-center mb-4">
+        <h2 className="text-2xl font-bold text-yellow-500 text-center mb-4">
           Create User
         </h2>
 
-        {/* Form */}
         <form onSubmit={handleCreateUser} className="space-y-4">
           <input
             type="text"
@@ -71,7 +64,7 @@ export default function Create() {
             onChange={handleChange}
             placeholder="Name"
             required
-            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-black rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
 
           <input
@@ -81,7 +74,7 @@ export default function Create() {
             onChange={handleChange}
             placeholder="Email"
             required
-            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-black rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
 
           <input
@@ -91,22 +84,22 @@ export default function Create() {
             onChange={handleChange}
             placeholder="Password"
             required
-            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-black rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
 
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded"
+            className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded"
           >
             Create User
           </button>
         </form>
 
-        {/* Message Display */}
         {message && (
-          <p className="text-center mt-4 text-sm font-semibold">{message}</p>
+          <p className="text-center mt-4 text-sm font-semibold text-yellow-500">{message}</p>
         )}
       </div>
     </div>
   );
 }
+

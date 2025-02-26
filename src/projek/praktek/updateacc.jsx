@@ -39,15 +39,15 @@ export default function UpdateAcc() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-yellow-400 p-4">
+      <div className="w-full max-w-md bg-black shadow-lg rounded-lg p-6">
         <Link
           to="/help"
-          className="inline-block mb-4 text-blue-500 hover:text-blue-700"
+          className="inline-block mb-4 text-yellow-500 hover:text-yellow-700"
         >
           &larr; Back
         </Link>
-        <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        <h1 className="text-2xl font-bold text-white mb-6 text-center">
           Update Account
         </h1>
         <form onSubmit={handleUpdateUser} className="space-y-4">
@@ -57,7 +57,7 @@ export default function UpdateAcc() {
             placeholder="User ID"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           <input
             type="text"
@@ -65,7 +65,7 @@ export default function UpdateAcc() {
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           <input
             type="email"
@@ -73,7 +73,7 @@ export default function UpdateAcc() {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           <input
             type="text"
@@ -81,16 +81,16 @@ export default function UpdateAcc() {
             placeholder="Avatar URL"
             value={formData.avatar}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           <button
             type="submit"
-            className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+            className="w-full bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-lg transition duration-300"
           >
             Update User
           </button>
           {message && (
-            <p className="text-center text-sm text-gray-700 mt-2">{message}</p>
+            <p className="text-center text-sm text-white mt-2">{message}</p>
           )}
         </form>
       </div>
